@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Next Step India | Education Consultancy</title>
+  <meta name="description" content="Next Step India Education Consultancy Management System">
+  <style>
+    :root{--navy:#082f75;--blue:#0759bd;--orange:#ff681c;--gold:#ff9d00;--bg:#f3f7fc;--ink:#172b4d;--muted:#65758b;--line:#dbe4ef;--white:#fff;--red:#b42318;--green:#067647}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+    .auth-wrap{min-height:100vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(500px,.98fr);position:relative;overflow:hidden;background:#f5f8fc}
+    .auth-wrap:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:url('next-step-india-logo.png');background-repeat:no-repeat;background-position:92% 50%;background-size:min(48vw,650px);opacity:.035;z-index:0}
+    .auth-wrap>*{position:relative;z-index:1}
+    .brand-panel{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:clamp(34px,6.7vw,105px);color:white;background:linear-gradient(135deg,rgba(4,39,104,.97),rgba(0,88,184,.88) 55%,rgba(91,174,233,.74)),url('login-scenery.jpg') center/cover no-repeat}
+    .brand-panel:before{content:"";position:absolute;width:520px;height:520px;border:1px solid #ffffff20;border-radius:50%;right:-210px;top:14%;box-shadow:0 0 0 40px #ffffff08,0 0 0 90px #ffffff06}
+    .brand-panel:after{content:"";position:absolute;left:-8%;right:-8%;height:110px;bottom:-70px;background:var(--orange);border-radius:50% 50% 0 0;transform:rotate(-3deg);box-shadow:0 -13px 0 #ff9d00}
+    .brand-content{position:relative;z-index:2;max-width:610px}
+    .brand-kicker{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#ffbd85;margin-bottom:22px}
+    .brand-kicker:before{content:"";width:34px;height:3px;background:var(--orange);border-radius:3px}
+    .brand-panel h1{font-size:clamp(38px,4.2vw,62px);line-height:1.04;letter-spacing:-.04em;margin:0 0 20px;font-weight:850}
+    .brand-panel h1 span{display:block;color:#ff7a2e}
+    .brand-panel .lead{font-size:clamp(16px,1.45vw,20px);line-height:1.65;color:#e5f1ff;max-width:470px;margin:0 0 30px}
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:19px 25px;max-width:530px}
+    .feature{display:flex;align-items:center;gap:13px;font-weight:650;font-size:14px;line-height:1.35;color:#fff}
+    .feature-icon{flex:0 0 46px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#ff9b19,#ff5d18);box-shadow:0 8px 20px #001c4b40;font-size:21px}
+    .brand-foot{margin-top:34px;font-size:13px;color:#d4e6ff;letter-spacing:.02em}
+    .auth-card-wrap{display:grid;place-items:center;padding:clamp(22px,4vw,58px);background:linear-gradient(135deg,#eef5fc,#fff 62%,#eaf2fb)}
+    .auth-card{width:min(100%,510px);background:rgba(255,255,255,.96);border:1px solid #e3eaf3;border-radius:18px;padding:clamp(26px,3.2vw,48px);box-shadow:0 22px 65px #173b6c1b;position:relative;overflow:hidden}
+    .auth-card:before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:linear-gradient(90deg,#ff9d00,#ff5c1a)}
+    .auth-brand{text-align:center;margin-bottom:28px}.auth-logo{width:min(100%,320px);height:100px;object-fit:contain;display:block;margin:0 auto 13px;filter:drop-shadow(0 5px 10px #102b4b12)}
+    .auth-brand p{font-size:14px;color:#66758a;margin:0}
+    .auth-card h2{text-align:center;margin:0 0 8px;font-size:32px;color:#073d8d;letter-spacing:-.025em}.sub{text-align:center;color:var(--muted);margin:0 0 26px;font-size:14px}
+    label{display:block;font-size:13px;font-weight:750;margin:15px 0 8px;color:#41536c}
+    input,select,textarea{width:100%;padding:15px 15px;border:1px solid #d6e0eb;border-radius:10px;background:#fff;outline:none;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+    input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px #0759bd16}
+    .auth-options{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:15px;font-size:13px;color:#52647b}.remember{display:flex;align-items:center;gap:8px;margin:0;font-weight:500}.remember input{width:17px;height:17px;margin:0;accent-color:var(--blue)}
+    .text-link{background:none;border:0;padding:0;color:#0759bd;font-weight:700;font-size:13px}.text-link:hover{text-decoration:underline}
+    .btn{border:0;border-radius:10px;padding:13px 16px;font-weight:750;background:linear-gradient(100deg,#ff9800,#ff5b1a);color:white;box-shadow:0 7px 16px #ff681c2b;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(.98);transform:translateY(-1px)}.btn.full{width:100%;margin-top:23px;padding:15px;font-size:16px}.btn.secondary{background:#e8eefb;color:var(--navy);box-shadow:none}.btn.danger{background:#fee4e2;color:var(--red)}.btn.small{padding:7px 10px;font-size:12px}
+    .auth-divider{display:flex;align-items:center;gap:14px;color:#607087;font-size:13px;margin:23px 0 18px}.auth-divider:before,.auth-divider:after{content:"";height:1px;background:#dce5ef;flex:1}
+    .role-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px}.role-btn{border:1px solid #0759bd;border-radius:10px;padding:13px 8px;background:white;color:#0759bd;font-weight:750}.role-btn.primary{background:linear-gradient(120deg,#0759bd,#073b91);color:white;box-shadow:0 6px 14px #0759bd22}
+    .secure-note{background:#edf6ff;color:#0759bd;border-radius:9px;padding:12px 10px;text-align:center;font-size:12px;margin-top:22px;font-weight:650}
+    .switch{font-size:14px;color:var(--muted);margin-top:18px;text-align:center}.switch button{background:none;border:0;color:var(--blue);font-weight:700}
+    .notice{padding:11px 13px;border-radius:9px;font-size:13px;margin:12px 0;line-height:1.5}.notice.error{background:#fef3f2;color:#b42318}.notice.ok{background:#ecfdf3;color:#067647}.notice.info{background:#eff6ff;color:#1d4ed8}
+    .app{position:relative;isolation:isolate;min-height:100vh}.app:before{content:"";position:fixed;inset:70px 0 0;pointer-events:none;background-image:url('next-step-india-logo.png');background-repeat:no-repeat;background-position:center;background-size:min(58vw,680px);opacity:.055;z-index:-1}
+    .visit-link{display:inline-flex;align-items:center;gap:7px;text-decoration:none;background:#fff;color:var(--navy);font-weight:800;padding:9px 12px;border-radius:9px;font-size:13px;white-space:nowrap}.visit-link:hover{background:#fff0e9;color:#d94716}
+    .topbar{height:70px;background:var(--navy);color:white;display:flex;align-items:center;justify-content:space-between;padding:0 24px;gap:14px}.brand{display:flex;align-items:center;gap:11px;font-weight:800}.brand .mark{width:38px;height:38px;border-radius:11px;background:var(--gold);color:var(--navy);display:grid;place-items:center}.top-actions{display:flex;align-items:center;gap:12px}.user-email{font-size:13px;color:#dce6f8}
+    .layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 70px)}.sidebar{background:#fff;border-right:1px solid var(--line);padding:20px 12px}.nav-btn{display:flex;gap:10px;align-items:center;width:100%;border:0;background:transparent;padding:12px;border-radius:9px;color:#475467;text-align:left;margin:3px 0;font-weight:650}.nav-btn.active,.nav-btn:hover{background:#fff0e9;color:#d94716;border-left:3px solid #ff681c}
+    .main{padding:clamp(18px,3vw,32px);min-width:0}.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px}.page-head h1{font-size:28px;margin:0 0 6px}.page-head p{margin:0;color:var(--muted)}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:22px}.stat,.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:18px}.stat span{display:block;color:var(--muted);font-size:13px}.stat strong{display:block;font-size:29px;margin-top:8px}.panel h3{margin:0 0 14px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.toolbar input{max-width:350px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px;background:white}table{width:100%;border-collapse:collapse;min-width:850px}th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);font-size:13px}th{background:#f8fafc;color:#475467;font-size:12px;text-transform:uppercase;letter-spacing:.04em}tr:last-child td{border-bottom:0}.badge{display:inline-block;padding:5px 8px;border-radius:99px;background:#fff0e9;color:#a93613;font-size:11px;font-weight:800;white-space:nowrap}.empty{padding:35px;text-align:center;color:var(--muted)}
+    .modal-backdrop{position:fixed;inset:0;background:#10182899;display:grid;place-items:center;padding:18px;z-index:10}.modal{background:white;width:min(100%,700px);max-height:92vh;overflow:auto;border-radius:16px;padding:24px}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.modal-head h2{margin:0}.close{border:0;background:#f2f4f7;border-radius:8px;padding:7px 11px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.span2{grid-column:span 2}.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}.small-muted{font-size:12px;color:var(--muted);line-height:1.6}.footer{margin-top:25px;color:#98a2b3;font-size:12px;text-align:center}
+    @media(max-width:1050px){.auth-wrap{grid-template-columns:minmax(0,.9fr) minmax(440px,1fr)}.brand-panel{padding:34px}.feature-grid{gap:14px}.auth-card-wrap{padding:24px}}
+    @media(max-width:850px){.auth-wrap{grid-template-columns:1fr}.brand-panel{min-height:auto;padding:42px 28px 55px}.brand-panel h1{font-size:42px}.brand-panel .lead{margin-bottom:22px}.feature-grid{max-width:620px}.brand-foot{margin-top:24px}.auth-card-wrap{padding:32px 18px}.auth-wrap:after{background-position:center;background-size:75vw}.layout{grid-template-columns:1fr}.sidebar{display:flex;overflow:auto;padding:8px;border-right:0;border-bottom:1px solid var(--line)}.nav-btn{white-space:nowrap;width:auto}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.main{padding:18px}}
+    @media(max-width:520px){.brand-panel{padding:32px 22px 48px}.brand-panel h1{font-size:36px}.brand-panel .lead{font-size:15px}.feature-grid{grid-template-columns:1fr 1fr;gap:14px 10px}.feature{font-size:12px;gap:8px}.feature-icon{width:38px;height:38px;flex-basis:38px;font-size:18px}.auth-card{padding:27px 20px}.auth-logo{height:82px;width:min(100%,270px)}.auth-card h2{font-size:28px}.auth-options{font-size:12px}.role-buttons{gap:8px}.role-btn{font-size:12px}.topbar{padding:0 8px}.brand img{width:125px!important}.visit-link{font-size:11px;padding:8px}.user-email{display:none}.stats{gap:8px}.stat{padding:13px}.stat strong{font-size:24px}.page-head{flex-direction:column}.form-grid{grid-template-columns:1fr}.span2{grid-column:auto}}
+  
+    /* Reference-matched centered login screen */
+    #authScreen.auth-wrap{
+      min-height:100vh; min-height:100svh; display:grid; grid-template-columns:1fr;
+      place-items:center; padding:28px 18px; overflow:hidden; position:relative;
+      background:linear-gradient(112deg,#0b438e 0%,#24477f 22%,#8b6473 50%,#f36d35 78%,#ff8b24 100%);
+    }
+    #authScreen.auth-wrap:before{
+      content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+      background-image:url('next-step-india-logo.png'); background-repeat:no-repeat;
+      background-position:left 7% center; background-size:min(56vw,760px); opacity:.13;
+      filter:grayscale(1) brightness(2.2);
+    }
+    #authScreen.auth-wrap:after{
+      content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+      background:linear-gradient(90deg,rgba(4,25,71,.22),transparent 55%,rgba(255,125,35,.08));
+    }
+    #authScreen .brand-panel{display:none!important}
+    #authScreen .auth-card-wrap{width:100%;min-height:auto;display:grid;place-items:center;padding:0;background:transparent;position:relative;z-index:1}
+    #authScreen .auth-card{
+      width:min(50vw,650px); min-width:490px; max-width:650px; padding:30px 48px 27px;
+      border:1px solid rgba(255,255,255,.72); border-radius:16px;
+      background:rgba(255,255,255,.97); box-shadow:0 24px 75px rgba(8,30,68,.32);
+      backdrop-filter:blur(8px); overflow:visible;
+    }
+    #authScreen .auth-card:before{height:5px;border-radius:16px 16px 0 0;background:linear-gradient(90deg,#123f91,#f05a24,#ff941f)}
+    #authScreen .auth-brand{margin-bottom:18px}
+    #authScreen .auth-logo{width:min(100%,330px);height:92px;object-fit:contain;margin:0 auto 8px;filter:drop-shadow(0 4px 9px rgba(19,45,87,.12))}
+    #authScreen .auth-brand p{font-size:13px;color:#596b86}
+    #authScreen .auth-card h2{font-size:30px;margin-bottom:6px;color:#123e87}
+    #authScreen .sub{margin-bottom:21px;font-size:14px}
+    #authScreen #loginForm label:not(.remember){display:block;margin:12px 0 6px;font-size:13px;font-weight:650;color:#344763}
+    #authScreen #loginForm input[type=email],#authScreen #loginForm input[type=password],#authScreen #loginForm input[type=text]{width:100%;height:48px;border:1px solid #d7e0ec;border-radius:10px;padding:0 15px;background:#fff;font-size:15px;box-sizing:border-box;outline:none}
+    #authScreen #loginForm input:focus{border-color:#2864bd;box-shadow:0 0 0 3px rgba(40,100,189,.12)}
+    #authScreen .auth-options{margin-top:13px}
+    #authScreen .btn.full{height:52px;margin-top:19px;border-radius:10px;background:linear-gradient(100deg,#0d4da4 0%,#6d627e 45%,#ff8a1c 100%);font-size:16px;box-shadow:0 7px 18px rgba(24,73,143,.18)}
+    #authScreen .auth-divider{margin:18px 0 15px}
+    #authScreen .role-buttons{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    #authScreen .role-btn{height:48px;border-radius:9px;font-size:14px}
+    #authScreen .role-btn.primary{background:#073c91;border-color:#073c91;color:#fff}
+    #authScreen .secure-note{margin-top:16px;padding:11px 8px;border-radius:8px;background:#edf5ff;color:#0750a8;font-size:12px;text-align:center}
+    #authScreen .switch{margin-top:13px;font-size:12px}
+    #authScreen .main-website-link{display:block;text-align:center;text-decoration:none;color:#0648a7;font-weight:750;font-size:14px;margin-top:16px}
+    #authScreen .main-website-url{display:block;text-align:center;color:#5b6e8b;font-size:12px;margin-top:4px;text-decoration:none}
+    #authScreen .main-website-link:hover{text-decoration:underline;color:#f05a24}
+    @media(max-width:900px){#authScreen .auth-card{width:min(70vw,620px);min-width:0;padding:28px 34px}#authScreen.auth-wrap:before{background-position:left center;background-size:70vw;opacity:.1}}
+    @media(max-width:560px){#authScreen.auth-wrap{padding:18px 12px}#authScreen .auth-card{width:100%;min-width:0;padding:25px 20px 22px}#authScreen .auth-logo{height:78px;width:min(100%,290px)}#authScreen .auth-card h2{font-size:27px}#authScreen .role-buttons{gap:8px}#authScreen .role-btn{font-size:12px;padding:9px 5px}#authScreen.auth-wrap:before{background-position:center 8%;background-size:100vw;opacity:.07}}
+    @media(max-height:760px) and (min-width:561px){#authScreen.auth-wrap{padding:14px}#authScreen .auth-card{padding-top:22px;padding-bottom:18px}#authScreen .auth-logo{height:72px}#authScreen .auth-brand{margin-bottom:12px}#authScreen .sub{margin-bottom:14px}#authScreen .btn.full{margin-top:13px;height:46px}#authScreen .auth-divider{margin:12px 0}#authScreen .role-btn{height:42px}#authScreen .secure-note{margin-top:11px;padding:8px}}
+
+  </style>
+</head>
+<body>
+  <section id="authScreen" class="auth-wrap">
+    <div class="brand-panel">
+      <div class="brand-content">
+        <div class="brand-kicker">Next Step India • Education Consultancy</div>
+        <h1>Your Dream to <span>Study Abroad</span> Starts Here</h1>
+        <p class="lead">Trusted education consultancy for your global future. Your secure workspace to manage students, admissions and scholarships.</p>
+        <div class="feature-grid">
+          <div class="feature"><span class="feature-icon">🏛️</span><span>University &amp;<br>Course Selection</span></div>
+          <div class="feature"><span class="feature-icon">✈️</span><span>Visa<br>Guidance</span></div>
+          <div class="feature"><span class="feature-icon">📄</span><span>Admission<br>Processing</span></div>
+          <div class="feature"><span class="feature-icon">🗂️</span><span>Documentation<br>Support</span></div>
+          <div class="feature"><span class="feature-icon">🎓</span><span>Scholarship<br>Assistance</span></div>
+        </div>
+        <div class="brand-foot">Your next step starts here — Study · Grow · Succeed</div>
+      </div>
+    </div>
+    <div class="auth-card-wrap">
+      <div class="auth-card">
+        <div class="auth-brand">
+          <img class="auth-logo" src="next-step-india-logo.png" alt="Next Step India company logo">
+          <p>Education Consultancy Management System</p>
+        </div>
+        <h2 id="authTitle">Login</h2><p class="sub" id="authSubtitle">Sign in to your account to continue</p>
+        <div id="authMessage"></div>
+        <form id="loginForm">
+          <label for="email">Email Address</label><input id="email" type="email" autocomplete="email" required placeholder="Enter your email address">
+          <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Enter your password">
+          <div class="auth-options">
+            <label class="remember"><input id="rememberMe" type="checkbox"> Remember me</label>
+            <button class="text-link" id="forgotPassword" type="button">Forgot Password?</button>
+          </div>
+          <button class="btn full" id="authSubmit" type="submit">⇥ &nbsp; Login</button>
+        </form>
+        <div class="auth-divider">OR</div>
+        <div class="role-buttons"><button class="role-btn primary" id="adminLoginShortcut" type="button">♟ &nbsp; Admin Login</button><button class="role-btn" id="staffLoginShortcut" type="button">👥 &nbsp; Staff Login</button></div>
+        <div class="secure-note">🛡 &nbsp; Secure • Trusted • Global Education Partner</div>
+        <a class="main-website-link" href="https://nextstepindia.vercel.app/?fbclid=IwY2xjawVQYtNleHRuA2FlbQIxMABwZG9mAXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR_Xriv-G1q5-v_6QhMmCKLaAqTNpZZS3sZPhkzlFEOVgZ4Vcqfih4MMUNmFaw_aem_SPybrC-IBRN0i497E-vnjg" target="_blank" rel="noopener noreferrer">🌐 Visit Our Main Website ↗</a>
+        <a class="main-website-url" href="https://nextstepindia.vercel.app/" target="_blank" rel="noopener noreferrer">https://nextstepindia.vercel.app/</a>
+        <div class="switch" id="authSwitch">First time here? <button id="showSignup" type="button">Create staff account</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="appScreen" class="app hidden">
+    <header class="topbar">
+      <div class="brand"><img src="next-step-india-logo.png" alt="Next Step India" style="width:190px;max-height:48px;object-fit:contain;background:white;border-radius:6px;padding:3px"></div>
+      <div class="top-actions"><a class="visit-link" href="https://nextstepindia.vercel.app/?fbclid=IwY2xjawVQYtNleHRuA2FlbQIxMABwZG9mAXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR_Xriv-G1q5-v_6QhMmCKLaAqTNpZZS3sZPhkzlFEOVgZ4Vcqfih4MMUNmFaw_aem_SPybrC-IBRN0i497E-vnjg" target="_blank" rel="noopener noreferrer">🌐 Visit Website</a><span id="userEmail" class="user-email"></span><button id="logoutBtn" class="btn secondary small">Sign out</button></div>
+    </header>
+    <div class="layout">
+      <aside class="sidebar">
+        <button class="nav-btn active" data-view="dashboard">▦ Dashboard</button>
+        <button class="nav-btn" data-view="students">♙ Students</button>
+        <button class="nav-btn" data-view="universities">⌂ Universities</button>
+        <button class="nav-btn" data-view="scholarships">☆ Scholarships</button>
+      </aside>
+      <main class="main">
+        <div id="appMessage"></div>
+        <section id="dashboardView">
+          <div class="page-head"><div><h1>Dashboard</h1><p>Overview of your student admission pipeline.</p></div><button class="btn" id="addStudentTop">+ Add student</button></div>
+          <div class="stats">
+            <div class="stat"><span>Total students</span><strong id="statTotal">0</strong></div>
+            <div class="stat"><span>Processing</span><strong id="statProcessing">0</strong></div>
+            <div class="stat"><span>Visa approved</span><strong id="statVisa">0</strong></div>
+            <div class="stat"><span>Admission completed</span><strong id="statComplete">0</strong></div>
+          </div>
+          <div class="panel"><h3>Recent students</h3><div id="recentStudents" class="table-wrap"></div></div>
+        </section>
+        <section id="studentsView" class="hidden">
+          <div class="page-head"><div><h1>Students</h1><p>Manage student profiles and application progress.</p></div><button class="btn" id="addStudentBtn">+ Add student</button></div>
+          <div class="toolbar"><input id="studentSearch" placeholder="Search name, passport, phone or university…"><select id="statusFilter" style="max-width:230px"><option value="">All statuses</option></select><button class="btn secondary" id="refreshStudents">Refresh</button></div>
+          <div id="studentsTable" class="table-wrap"></div>
+        </section>
+        <section id="universitiesView" class="hidden">
+          <div class="page-head"><div><h1>Universities</h1><p>Reference directory for partner universities.</p></div><button class="btn" id="addUniversityBtn">+ Add university</button></div>
+          <div id="universitiesTable" class="table-wrap"></div>
+        </section>
+        <section id="scholarshipsView" class="hidden">
+          <div class="page-head"><div><h1>Scholarships</h1><p>Track scholarship opportunities and student applications.</p></div><button class="btn" id="addScholarshipBtn">+ Add scholarship</button></div>
+          <div id="scholarshipsTable" class="table-wrap"></div>
+        </section>
+        <div class="footer">Next Step India · Education Consultancy Management System</div>
+      </main>
+    </div>
+  </section>
+
+  <div id="modalBackdrop" class="modal-backdrop hidden">
+    <div class="modal"><div class="modal-head"><h2 id="modalTitle">Add record</h2><button class="close" id="closeModal" type="button">✕</button></div><div id="modalBody"></div></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Add your Supabase Project URL and publishable key here.
+    // Publishable/anon keys are intended for browser use; never put a service_role or secret key here.
+    const SUPABASE_URL = "https://narhrmsyjjndwlnnmgbw.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_8n6d9r8H7U2VjyOpOjU-kw_JqLRsqK_";
+
+    const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_URL.includes("YOUR_") && !SUPABASE_PUBLISHABLE_KEY.includes("YOUR_");
+    const sb = configured ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY) : null;
+    const statuses = ["New Registration","Documents Pending","Application Processing","Applied to University","Offer Letter Received","Visa Processing","Visa Approved","Admission Completed","Application Rejected"];
+    let currentUser = null, currentRole = "staff", students = [], universities = [], scholarships = [], signupMode = false;
+
+    const $ = id => document.getElementById(id);
+    function esc(v){return String(v ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+    function message(target, text, type="info"){ $(target).innerHTML = `<div class="notice ${type}">${esc(text)}</div>`; }
+    function clearMessage(target){ $(target).innerHTML = ""; }
+    function showAuth(){ $("authScreen").classList.remove("hidden"); $("appScreen").classList.add("hidden"); }
+    function showApp(){ $("authScreen").classList.add("hidden"); $("appScreen").classList.remove("hidden"); $("userEmail").textContent=currentUser?.email||""; }
+    function statusBadge(s){return `<span class="badge">${esc(s||"New Registration")}</span>`;}
+    function dateShort(s){return s?new Date(s).toLocaleDateString():"—";}
+    function tableEmpty(text){return `<div class="empty">${esc(text)}</div>`;}
+
+    async function boot(){
+      if(!configured){showAuth(); message("authMessage","Setup needed: add your Supabase Project URL and Publishable Key in index.html, then upload the file to GitHub Pages.","info");}
+      if(!sb) return;
+      const {data:{session}} = await sb.auth.getSession();
+      if(session) {currentUser=session.user; await loadProfileAndApp();}
+      sb.auth.onAuthStateChange(async (_event,session)=>{ if(session){currentUser=session.user; await loadProfileAndApp();} else {currentUser=null;showAuth();} });
+    }
+    $("showSignup").addEventListener("click",()=>{
+      signupMode=!signupMode;
+      $("authTitle").textContent=signupMode?"Create staff account":"Welcome back";
+      $("authSubtitle").textContent=signupMode?"Create an account using your work email.":"Sign in to your consultancy workspace.";
+      $("authSubmit").textContent=signupMode?"Create account":"Sign in";
+      $("authSwitch").innerHTML=signupMode?'Already have an account? <button id="showSignup" type="button">Sign in</button>':'First time here? <button id="showSignup" type="button">Create staff account</button>';
+      $("showSignup").onclick=()=>{signupMode=!signupMode;$("authTitle").textContent=signupMode?"Create staff account":"Welcome back";$("authSubtitle").textContent=signupMode?"Create an account using your work email.":"Sign in to your consultancy workspace.";$("authSubmit").textContent=signupMode?"Create account":"Sign in";$("authSwitch").innerHTML=signupMode?'Already have an account? <button id="showSignup" type="button">Sign in</button>':'First time here? <button id="showSignup" type="button">Create staff account</button>';wireSwitch();};
+    });
+    function wireSwitch(){const b=$("showSignup");if(b)b.onclick=()=>{signupMode=!signupMode;$("authTitle").textContent=signupMode?"Create staff account":"Welcome back";$("authSubtitle").textContent=signupMode?"Create an account using your work email.":"Sign in to your consultancy workspace.";$("authSubmit").textContent=signupMode?"Create account":"Sign in";$("authSwitch").innerHTML=signupMode?'Already have an account? <button id="showSignup" type="button">Sign in</button>':'First time here? <button id="showSignup" type="button">Create staff account</button>';wireSwitch();};}
+    const forgotBtn = $("forgotPassword");
+    if(forgotBtn) forgotBtn.addEventListener("click", async ()=>{
+      clearMessage("authMessage");
+      const email = $("email").value.trim();
+      if(!email){message("authMessage","Enter your email address first, then click Forgot Password?.","info");$("email").focus();return;}
+      if(!sb){message("authMessage","Please configure Supabase URL and Publishable Key first.","error");return;}
+      try{
+        const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+window.location.pathname});
+        if(error) throw error;
+        message("authMessage","If this email is registered, a password reset link has been sent.","ok");
+      }catch(err){message("authMessage",err.message||"Could not send password reset email.","error");}
+    });
+    ["adminLoginShortcut","staffLoginShortcut"].forEach(id=>{const b=$(id);if(b)b.addEventListener("click",()=>{message("authMessage","Enter your assigned email and password. Your access level is determined by your Supabase account role.","info");$("email").focus();});});
+
+    $("loginForm").addEventListener("submit",async e=>{
+      e.preventDefault();clearMessage("authMessage");
+      if(!sb){message("authMessage","Please configure Supabase URL and Publishable Key first.","error");return;}
+      const email=$("email").value.trim(),password=$("password").value;
+      $("authSubmit").disabled=true;
+      try{
+        const result=signupMode?await sb.auth.signUp({email,password}):await sb.auth.signInWithPassword({email,password});
+        if(result.error) throw result.error;
+        if(signupMode && !result.data.session){message("authMessage","Account created. Check your email to confirm the address, then sign in.","ok");}
+        else if(signupMode){message("authMessage","Account created. If email confirmation is enabled, confirm your email and sign in.","ok");}
+      }catch(err){message("authMessage",err.message||"Authentication failed.","error");}
+      finally{$("authSubmit").disabled=false;}
+    });
+
+    async function loadProfileAndApp(){
+      try{
+        const {data:profile,error}=await sb.from("profiles").select("role,full_name").eq("id",currentUser.id).single();
+        if(error) throw error;
+        currentRole=profile.role||"staff"; showApp(); await loadAll();
+      }catch(err){showAuth();message("authMessage","Could not load your user profile. Run schema.sql in Supabase SQL Editor and check that your profile exists. Details: "+err.message,"error");}
+    }
+    async function loadAll(){clearMessage("appMessage");await Promise.all([loadStudents(),loadUniversities(),loadScholarships()]);renderDashboard();}
+    async function loadStudents(){
+      const {data,error}=await sb.from("students").select("*").order("created_at",{ascending:false});
+      if(error){message("appMessage","Could not load students: "+error.message,"error");return;}
+      students=data||[];renderStudents();renderDashboard();
+    }
+    async function loadUniversities(){
+      const {data,error}=await sb.from("universities").select("*").order("name");
+      if(error){message("appMessage","Could not load universities: "+error.message,"error");return;}
+      universities=data||[];renderUniversities();
+    }
+    async function loadScholarships(){
+      const {data,error}=await sb.from("scholarships").select("*, students(full_name)").order("created_at",{ascending:false});
+      if(error){message("appMessage","Could not load scholarships: "+error.message,"error");return;}
+      scholarships=data||[];renderScholarships();
+    }
+    function renderDashboard(){
+      $("statTotal").textContent=students.length;
+      $("statProcessing").textContent=students.filter(s=>["Application Processing","Applied to University","Documents Pending"].includes(s.status)).length;
+      $("statVisa").textContent=students.filter(s=>s.status==="Visa Approved").length;
+      $("statComplete").textContent=students.filter(s=>s.status==="Admission Completed").length;
+      const recent=students.slice(0,6);
+      $("recentStudents").innerHTML=recent.length?studentTable(recent,false):tableEmpty("No students yet. Add your first student.");
+    }
+    function studentTable(rows,actions=true){
+      return `<table><thead><tr><th>Student</th><th>Passport</th><th>Phone</th><th>University</th><th>Status</th>${actions?'<th>Actions</th>':''}</tr></thead><tbody>${rows.map(s=>`<tr><td><strong>${esc(s.full_name)}</strong><br><span class="small-muted">${esc(s.email||"")}</span></td><td>${esc(s.passport_number||"—")}</td><td>${esc(s.phone||"—")}</td><td>${esc(s.university_name||"—")}</td><td>${statusBadge(s.status)}</td>${actions?`<td><button class="btn secondary small" onclick="editStudent('${s.id}')">Edit</button> <button class="btn danger small" onclick="deleteStudent('${s.id}')">Delete</button></td>`:""}</tr>`).join("")}</tbody></table>`;
+    }
+    function renderStudents(){
+      const f=$("statusFilter"); const old=f.value;
+      f.innerHTML='<option value="">All statuses</option>'+statuses.map(s=>`<option>${esc(s)}</option>`).join("");f.value=old;
+      const q=($("studentSearch").value||"").toLowerCase(),st=f.value;
+      const rows=students.filter(s=>(!st||s.status===st)&&[s.full_name,s.passport_number,s.phone,s.university_name,s.email].some(v=>String(v||"").toLowerCase().includes(q)));
+      $("studentsTable").innerHTML=rows.length?studentTable(rows,true):tableEmpty("No matching student records.");
+    }
+    function renderUniversities(){
+      $("universitiesTable").innerHTML=universities.length?`<table><thead><tr><th>University</th><th>City / State</th><th>Website</th><th>Notes</th><th></th></tr></thead><tbody>${universities.map(u=>`<tr><td><strong>${esc(u.name)}</strong></td><td>${esc([u.city,u.state].filter(Boolean).join(", ")||"—")}</td><td>${u.website?`<a href="${esc(u.website)}" target="_blank" rel="noopener noreferrer">Visit</a>`:"—"}</td><td>${esc(u.notes||"—")}</td><td>${currentRole==="admin"?`<button class="btn danger small" onclick="deleteUniversity('${u.id}')">Delete</button>`:""}</td></tr>`).join("")}</tbody></table>`:tableEmpty("No universities added yet.");
+      $("addUniversityBtn").classList.toggle("hidden",currentRole!=="admin");
+    }
+    function renderScholarships(){
+      $("scholarshipsTable").innerHTML=scholarships.length?`<table><thead><tr><th>Scholarship</th><th>Student</th><th>Deadline</th><th>Status</th><th>Notes</th><th></th></tr></thead><tbody>${scholarships.map(x=>`<tr><td><strong>${esc(x.title)}</strong><br><span class="small-muted">${esc(x.provider||"")}</span></td><td>${esc(x.students?.full_name||"—")}</td><td>${dateShort(x.deadline)}</td><td>${statusBadge(x.status)}</td><td>${esc(x.notes||"—")}</td><td><button class="btn danger small" onclick="deleteScholarship('${x.id}')">Delete</button></td></tr>`).join("")}</tbody></table>`:tableEmpty("No scholarship records yet.");
+    }
+    function openView(view){
+      ["dashboard","students","universities","scholarships"].forEach(v=>$(v+"View").classList.toggle("hidden",v!==view));
+      document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===view));
+    }
+    document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>openView(b.dataset.view)));
+    $("addStudentTop").onclick=$("addStudentBtn").onclick=()=>studentModal();
+    $("refreshStudents").onclick=loadStudents;$("studentSearch").addEventListener("input",renderStudents);$("statusFilter").addEventListener("change",renderStudents);
+    $("logoutBtn").onclick=async()=>{if(sb)await sb.auth.signOut();showAuth();};
+    $("closeModal").onclick=closeModal;$("modalBackdrop").addEventListener("click",e=>{if(e.target===$("modalBackdrop"))closeModal();});
+    function closeModal(){$("modalBackdrop").classList.add("hidden");}
+    function showModal(title,body){$("modalTitle").textContent=title;$("modalBody").innerHTML=body;$("modalBackdrop").classList.remove("hidden");}
+    function studentModal(s={}){
+      showModal(s.id?"Edit student":"Add student",`<form id="studentForm"><div class="form-grid">
+        <div><label>Full name *</label><input name="full_name" required value="${esc(s.full_name||"")}"></div>
+        <div><label>Phone / WhatsApp</label><input name="phone" value="${esc(s.phone||"")}"></div>
+        <div><label>Email</label><input name="email" type="email" value="${esc(s.email||"")}"></div>
+        <div><label>Passport number</label><input name="passport_number" value="${esc(s.passport_number||"")}"></div>
+        <div><label>University</label><input name="university_name" list="universityOptions" value="${esc(s.university_name||"")}"><datalist id="universityOptions">${universities.map(u=>`<option value="${esc(u.name)}">`).join("")}</datalist></div>
+        <div><label>Course</label><input name="course_name" value="${esc(s.course_name||"")}" placeholder="e.g. B.Tech CSE"></div>
+        <div><label>Admission year</label><input name="admission_year" type="number" min="2000" max="2100" value="${esc(s.admission_year||"")}"></div>
+        <div><label>Application status</label><select name="status">${statuses.map(x=>`<option ${x===(s.status||statuses[0])?"selected":""}>${esc(x)}</option>`).join("")}</select></div>
+        <div class="span2"><label>Internal notes</label><textarea name="notes" rows="3">${esc(s.notes||"")}</textarea></div>
+      </div><p class="small-muted">Student records are restricted by Supabase Row Level Security. Staff can manage their assigned records; administrators can manage all records.</p><div class="form-actions"><button type="button" class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" type="submit">Save student</button></div></form>`);
+      $("studentForm").onsubmit=async e=>{
+        e.preventDefault();const form=new FormData(e.target);const obj=Object.fromEntries(form.entries());
+        obj.admission_year=obj.admission_year?Number(obj.admission_year):null;
+        obj.assigned_to=s.assigned_to||currentUser.id;
+        try{
+          const result=s.id?await sb.from("students").update(obj).eq("id",s.id):await sb.from("students").insert(obj);
+          if(result.error)throw result.error;closeModal();await loadStudents();message("appMessage","Student saved successfully.","ok");
+        }catch(err){message("appMessage","Could not save student: "+err.message,"error");closeModal();}
+      };
+    }
+    window.editStudent=id=>{const s=students.find(x=>x.id===id);if(s)studentModal(s);};
+    window.deleteStudent=async id=>{if(!confirm("Delete this student record? This cannot be undone."))return;const {error}=await sb.from("students").delete().eq("id",id);if(error)message("appMessage","Delete failed: "+error.message,"error");else{await loadAll();message("appMessage","Student deleted.","ok");}};
+    $("addUniversityBtn").onclick=()=>{
+      if(currentRole!=="admin")return;
+      showModal("Add university",`<form id="universityForm"><label>University name *</label><input name="name" required><div class="form-grid"><div><label>City</label><input name="city"></div><div><label>State</label><input name="state"></div></div><label>Website</label><input name="website" type="url" placeholder="https://"><label>Notes</label><textarea name="notes" rows="2"></textarea><div class="form-actions"><button type="button" class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn">Save university</button></div></form>`);
+      $("universityForm").onsubmit=async e=>{e.preventDefault();const obj=Object.fromEntries(new FormData(e.target).entries());const {error}=await sb.from("universities").insert(obj);if(error)message("appMessage","Could not save university: "+error.message,"error");else{closeModal();await loadUniversities();message("appMessage","University added.","ok");}};
+    };
+    window.deleteUniversity=async id=>{if(currentRole!=="admin"||!confirm("Delete this university?"))return;const {error}=await sb.from("universities").delete().eq("id",id);if(error)message("appMessage","Delete failed: "+error.message,"error");else await loadUniversities();};
+    $("addScholarshipBtn").onclick=()=>{
+      const opts=students.map(s=>`<option value="${s.id}">${esc(s.full_name)} — ${esc(s.passport_number||"no passport")}</option>`).join("");
+      showModal("Add scholarship record",`<form id="scholarshipForm"><label>Scholarship title *</label><input name="title" required><label>Provider / organisation</label><input name="provider"><label>Student</label><select name="student_id"><option value="">General opportunity (no student linked)</option>${opts}</select><div class="form-grid"><div><label>Deadline</label><input type="date" name="deadline"></div><div><label>Status</label><select name="status"><option>Researching</option><option>Documents Pending</option><option>Applied</option><option>Awarded</option><option>Rejected</option></select></div></div><label>Notes</label><textarea name="notes" rows="3"></textarea><div class="form-actions"><button type="button" class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn">Save scholarship</button></div></form>`);
+      $("scholarshipForm").onsubmit=async e=>{e.preventDefault();const obj=Object.fromEntries(new FormData(e.target).entries());obj.student_id=obj.student_id||null;obj.deadline=obj.deadline||null;obj.assigned_to=currentUser.id;const {error}=await sb.from("scholarships").insert(obj);if(error)message("appMessage","Could not save scholarship: "+error.message,"error");else{closeModal();await loadScholarships();message("appMessage","Scholarship saved.","ok");}};
+    };
+    window.deleteScholarship=async id=>{if(!confirm("Delete this scholarship record?"))return;const {error}=await sb.from("scholarships").delete().eq("id",id);if(error)message("appMessage","Delete failed: "+error.message,"error");else await loadScholarships();};
+    boot();
+  </script>
+</body>
+</html>
